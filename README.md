@@ -8,6 +8,7 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Includes a simple rating (grade + score) for quick comparison.
 - Demo mode via `/{username}?demo=1` or `/test` without a token.
 - Force refresh via `/{username}?refresh=1` to bypass cache once.
+- Theme support via `?theme=light`, `?theme=dark` (default), or `?theme=matrix`.
 
 ## Local Development
 1. Install dependencies
@@ -43,3 +44,4 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - The GitHub token only needs `read:user` + `repo` public access to query stats.
 - Cached responses are stored for one hour to reduce API usage.
 - Grade thresholds and scoring weights can be edited in `src/index.js`.
+- Avatars are inlined in the SVG by default for GitHub README compatibility; use `?avatar=external` to keep the original URL.
