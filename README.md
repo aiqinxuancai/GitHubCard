@@ -8,7 +8,7 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Includes a simple rating (grade + score) for quick comparison.
 - Demo mode via `/{username}?demo=1` or `/test` without a token.
 - Force refresh via `/{username}?refresh=1` to bypass cache once.
-- Theme support via `?theme=light`, `?theme=dark` (default), or `?theme=matrix`.
+- Theme support via `?theme=light`, `?theme=dark` (default), `?theme=matrix`, `?theme=ayaka`, or `?theme=sakura` (snow + petals).
 
 ## Local Development
 1. Install dependencies
