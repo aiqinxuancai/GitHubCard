@@ -7,6 +7,7 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Uses GitHub GraphQL to collect yearly contributions and totals.
 - Includes a simple rating (grade + score) for quick comparison.
 - Demo mode via `/{username}?demo=1` or `/test` without a token.
+- Force refresh via `/{username}?refresh=1` to bypass cache once.
 
 ## Local Development
 1. Install dependencies

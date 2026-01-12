@@ -16,11 +16,17 @@ export default {
       return svgResponse(svg);
     }
 
+    const shouldRefresh =
+      url.searchParams.get("refresh") === "1" ||
+      url.searchParams.get("refresh") === "true";
+
     const cacheKey = new Request(url.toString(), request);
     const cache = caches.default;
-    const cached = await cache.match(cacheKey);
-    if (cached) {
-      return cached;
+    if (!shouldRefresh) {
+      const cached = await cache.match(cacheKey);
+      if (cached) {
+        return cached;
+      }
     }
 
     const token = env.GITHUB_TOKEN;
@@ -237,7 +243,7 @@ function renderCardSvg(stats) {
 
       return `
         <g transform="translate(${x} ${y})">
-          <rect width="${width}" height="44" rx="14" fill="rgba(255,255,255,0.08)" />
+          <rect width="${width}" height="44" rx="14" fill="rgba(15,23,42,0.55)" stroke="rgba(148,163,184,0.18)" />
           <text class="label" x="16" y="18">${escapeXml(metric.label)}</text>
           <text class="value" x="16" y="34">${escapeXml(metric.value)}</text>
         </g>
@@ -253,38 +259,65 @@ function renderCardSvg(stats) {
 <svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${escapeXml(aria)}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1f2937" />
+      <stop offset="0%" stop-color="#0b1020" />
+      <stop offset="45%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1a2338" />
     </linearGradient>
+    <radialGradient id="glow1" cx="0.2" cy="0.1" r="0.6">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.9" cy="0.8" r="0.7">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0" />
+    </radialGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#a855f7" />
     </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.04)" />
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(148,163,184,0.08)" stroke-width="1" />
+    </pattern>
     <clipPath id="avatarClip">
       <circle cx="60" cy="64" r="36" />
     </clipPath>
+    <symbol id="githubIcon" viewBox="0 0 496 512">
+      <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.5-5.2 3.5-3.3.3-5.6-1.3-5.6-3.5 0-2 2.3-3.5 5.2-3.5 3.3-.3 5.6 1.3 5.6 3.5zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6.7 5.6-.3 6.2-2.3.7-2-1.3-4.3-4.3-5.2-2.6-.6-5.6.4-6.2 2.6zm44.2-1.7c-2.9.7-4.9 3-4.6 5.3.3 2.3 2.9 3.6 5.9 3 2.9-.7 4.9-3 4.6-5.3-.3-2.3-3-3.6-5.9-3zm73.5 6.3c-1 2.3 1.3 5.2 4.9 6.5 3.6 1.3 7.5.3 8.5-2 1-2.3-1.3-5.2-4.9-6.5-3.6-1.3-7.5-.3-8.5 2zm-36-7c-3.3.7-5.6 3.6-5.2 6.2.3 2.6 3.3 4.3 6.6 3.6 3.3-.7 5.6-3.6 5.2-6.2-.3-2.6-3.2-4.3-6.6-3.6zM248 8C111 8 0 119 0 256c0 110.2 71.4 203.8 170.7 236.9 12.5 2.3 17.1-5.4 17.1-12 0-6-0.2-21.7-0.3-42.7-69.5 15.1-84.1-33.5-84.1-33.5-11.4-29-27.9-36.7-27.9-36.7-22.8-15.6 1.7-15.3 1.7-15.3 25.2 1.8 38.5 25.8 38.5 25.8 22.4 38.4 58.8 27.3 73.1 20.9 2.3-16.2 8.8-27.3 16-33.6-55.5-6.3-113.8-27.8-113.8-123.6 0-27.3 9.8-49.6 25.8-67.1-2.6-6.3-11.2-31.8 2.4-66.1 0 0 21-6.7 68.8 25.6 20-5.6 41.5-8.4 62.8-8.5 21.3.1 42.8 2.9 62.8 8.5 47.8-32.3 68.8-25.6 68.8-25.6 13.6 34.3 5 59.8 2.4 66.1 16 17.5 25.8 39.8 25.8 67.1 0 96.1-58.4 117.2-114 123.4 9 7.8 17.1 23.1 17.1 46.6 0 33.6-.3 60.7-.3 69 0 6.6 4.5 14.4 17.2 12C424.6 459.8 496 366.2 496 256 496 119 385 8 248 8z" />
+    </symbol>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feColorMatrix type="matrix" values="0 0 0 0 0.4  0 0 0 0 0.7  0 0 0 0 1  0 0 0 0.3 0" />
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.6  0 0 0 0 1  0 0 0 0.4 0" />
       <feBlend in="SourceGraphic" in2="blur" mode="screen" />
     </filter>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b1020" flood-opacity="0.55" />
+    </filter>
     <style>
-      .title { font: 600 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #f8fafc; }
-      .subtitle { font: 400 13px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #94a3b8; }
-      .label { font: 500 11px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #cbd5f5; letter-spacing: 0.4px; text-transform: uppercase; }
+      .title { font: 600 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #f8fafc; letter-spacing: 0.2px; }
+      .subtitle { font: 400 12.5px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #94a3b8; }
+      .label { font: 500 10.5px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #b6c2e2; letter-spacing: 0.6px; text-transform: uppercase; }
       .value { font: 600 16px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #f1f5f9; }
-      .grade { font: 700 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #0f172a; }
-      .score { font: 500 11px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #0f172a; text-transform: uppercase; letter-spacing: 1px; }
+      .grade { font: 700 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #0b1020; }
+      .score { font: 500 11px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #0b1020; text-transform: uppercase; letter-spacing: 0.9px; }
     </style>
   </defs>
 
   <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#bg)" />
-  <rect x="18" y="18" width="${WIDTH - 36}" height="${HEIGHT - 36}" rx="22" fill="rgba(15,23,42,0.45)" stroke="rgba(148,163,184,0.15)" />
+  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#grid)" opacity="0.5" />
+  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#glow1)" />
+  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#glow2)" />
+  <rect x="18" y="18" width="${WIDTH - 36}" height="${HEIGHT - 36}" rx="22" fill="url(#glass)" stroke="rgba(148,163,184,0.2)" filter="url(#cardShadow)" />
 
-  <circle cx="540" cy="80" r="70" fill="url(#accent)" opacity="0.14" filter="url(#softGlow)" />
-  <circle cx="560" cy="260" r="90" fill="#f97316" opacity="0.08" />
+  <circle cx="528" cy="70" r="78" fill="url(#accent)" opacity="0.18" filter="url(#softGlow)" />
+  <circle cx="560" cy="260" r="96" fill="#60a5fa" opacity="0.08" />
 
   <g>
+    <circle cx="60" cy="64" r="36" fill="rgba(15,23,42,0.65)" stroke="rgba(148,163,184,0.25)" />
+    <use href="#githubIcon" x="38" y="42" width="44" height="44" style="color:#94a3b8" opacity="0.85" />
     <image href="${escapeXml(stats.avatarUrl)}" x="24" y="28" width="72" height="72" clip-path="url(#avatarClip)" />
     <text class="title" x="112" y="56">${escapeXml(stats.name)}</text>
     <text class="subtitle" x="112" y="78">${escapeXml(subtitle)}</text>
