@@ -1,0 +1,6 @@
+﻿name = "githubcard"
+main = "src/index.js"
+compatibility_date = "2026-01-12"
+
+[vars]
+# Optional: set a fallback theme or defaults here if desired.

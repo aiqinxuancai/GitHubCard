@@ -1,0 +1,15 @@
+﻿{
+  "name": "githubcard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "wrangler": "^3.50.0"
+  }
+}
