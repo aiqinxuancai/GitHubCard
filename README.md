@@ -4,7 +4,7 @@
 
 |  |  |
 | --- | --- |
-| A GitHub profile card SVG generator deployed on Cloudflare Workers. | <img src="images/ayaka.svg" alt="ayaka" width="320" /> |
+| A GitHub profile card SVG generator deployed on Cloudflare Workers. | <img src="images/ayaka.svg" alt="ayaka" width="400" /> |
 
 ## Features
 - `/{username}` endpoint that returns an SVG image.
@@ -21,29 +21,6 @@
 3. Repository access: **All public repositories** (or narrower if you prefer).
 4. Permissions: `read:user` (and `repo` only if you need private data).
 5. Generate and copy the token (it’s shown only once).
-
-## Deploy
-### Cloudflare Dashboard (No CLI)
-1. Cloudflare Dashboard -> Workers & Pages -> Create -> Worker -> Start from scratch.
-2. Open **Quick Edit / Edit code**, replace the default code with `src/index.js`.
-3. **Settings -> Variables**: add `GITHUB_TOKEN` as an encrypted variable.
-4. Save and Deploy.
-5. Visit `https://<your-worker>.workers.dev/{github-name}` (or `/test` for demo).
-
-### Wrangler CLI
-1. Authenticate Wrangler:
-   ```bash
-   npx wrangler login
-   ```
-2. Add the GitHub token as a secret:
-   ```bash
-   npx wrangler secret put GITHUB_TOKEN
-   ```
-3. Deploy:
-   ```bash
-   npm run deploy
-   ```
-4. Access `https://your-worker-domain/{github-name}`
 
 ## Theme Preview
 
@@ -69,6 +46,29 @@
    npm run dev
    ```
 4. Visit `http://localhost:8787/{github-name}`
+
+## Deploy
+### Cloudflare Dashboard (No CLI)
+1. Cloudflare Dashboard -> Workers & Pages -> Create -> Worker -> Start from scratch.
+2. Open **Quick Edit / Edit code**, replace the default code with `src/index.js`.
+3. **Settings -> Variables**: add `GITHUB_TOKEN` as an encrypted variable.
+4. Save and Deploy.
+5. Visit `https://<your-worker>.workers.dev/{github-name}` (or `/test` for demo).
+
+### Wrangler CLI
+1. Authenticate Wrangler:
+   ```bash
+   npx wrangler login
+   ```
+2. Add the GitHub token as a secret:
+   ```bash
+   npx wrangler secret put GITHUB_TOKEN
+   ```
+3. Deploy:
+   ```bash
+   npm run deploy
+   ```
+4. Access `https://your-worker-domain/{github-name}`
 
 ## Notes
 - The GitHub token only needs `read:user` + `repo` public access to query stats.
