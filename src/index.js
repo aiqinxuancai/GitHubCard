@@ -274,21 +274,27 @@ function renderCardSvg(stats, theme) {
   const sakuraDefs =
     theme === "sakura"
       ? `
+    <radialGradient id="sakuraBloom" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="${palette.sakuraBloom}" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="${palette.sakuraBloom}" stop-opacity="0" />
+    </radialGradient>
     <pattern id="sakuraPetals" width="120" height="120" patternUnits="userSpaceOnUse">
-      <g fill="${palette.sakuraPetal}" fill-opacity="0.35" stroke="${palette.sakuraPetalStroke}" stroke-width="0.5">
-        <ellipse cx="18" cy="18" rx="6" ry="3" transform="rotate(-18 18 18)" />
-        <ellipse cx="78" cy="26" rx="5" ry="2.6" transform="rotate(22 78 26)" />
-        <ellipse cx="42" cy="64" rx="7" ry="3.2" transform="rotate(-35 42 64)" />
-        <ellipse cx="92" cy="78" rx="6" ry="3" transform="rotate(28 92 78)" />
+      <g fill="${palette.sakuraPetal}" fill-opacity="0.5" stroke="${palette.sakuraPetalStroke}" stroke-width="0.6">
+        <ellipse cx="18" cy="18" rx="7" ry="3.4" transform="rotate(-18 18 18)" />
+        <ellipse cx="78" cy="26" rx="6" ry="3" transform="rotate(22 78 26)" />
+        <ellipse cx="42" cy="64" rx="8" ry="3.6" transform="rotate(-35 42 64)" />
+        <ellipse cx="92" cy="78" rx="7" ry="3.3" transform="rotate(28 92 78)" />
+        <ellipse cx="26" cy="92" rx="6.5" ry="3.1" transform="rotate(-10 26 92)" />
       </g>
     </pattern>
     <pattern id="sakuraSnow" width="140" height="140" patternUnits="userSpaceOnUse">
-      <g fill="${palette.sakuraSnow}" fill-opacity="0.5">
-        <circle cx="20" cy="30" r="1.6" />
-        <circle cx="60" cy="18" r="1.2" />
-        <circle cx="110" cy="46" r="1.4" />
-        <circle cx="36" cy="96" r="1.5" />
-        <circle cx="90" cy="102" r="1.1" />
+      <g fill="${palette.sakuraSnow}" fill-opacity="0.65">
+        <circle cx="18" cy="24" r="1.5" />
+        <circle cx="60" cy="18" r="1.1" />
+        <circle cx="108" cy="44" r="1.3" />
+        <circle cx="36" cy="96" r="1.4" />
+        <circle cx="90" cy="102" r="1.2" />
+        <circle cx="122" cy="92" r="1.1" />
       </g>
     </pattern>
   `
@@ -296,8 +302,9 @@ function renderCardSvg(stats, theme) {
   const sakuraOverlay =
     theme === "sakura"
       ? `
+  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#sakuraBloom)" opacity="0.7" />
   <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#sakuraSnow)" opacity="0.45" />
-  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#sakuraPetals)" opacity="0.45" />
+  <rect width="${WIDTH}" height="${HEIGHT}" rx="28" fill="url(#sakuraPetals)" opacity="0.6" />
   `
       : "";
   const metrics = [
@@ -602,39 +609,40 @@ function getThemePalette(theme) {
 
   if (theme === "sakura") {
     return {
-      bgStart: "#f9fbff",
-      bgMid: "#e0f2fe",
-      bgEnd: "#dbe7ff",
-      glow1: "#7dd3fc",
-      glow1Opacity: "0.35",
-      glow2: "#fbcfe8",
-      glow2Opacity: "0.25",
-      accentStart: "#60a5fa",
-      accentEnd: "#a5b4fc",
+      bgStart: "#fff1f5",
+      bgMid: "#ffe4e6",
+      bgEnd: "#e9d5ff",
+      glow1: "#f472b6",
+      glow1Opacity: "0.38",
+      glow2: "#a78bfa",
+      glow2Opacity: "0.28",
+      accentStart: "#f472b6",
+      accentEnd: "#a78bfa",
       glassFrom: "rgba(255,255,255,0.92)",
-      glassTo: "rgba(255,255,255,0.6)",
-      gridStroke: "rgba(99,102,241,0.15)",
-      glassStroke: "rgba(99,102,241,0.12)",
+      glassTo: "rgba(255,255,255,0.7)",
+      gridStroke: "rgba(244,114,182,0.2)",
+      glassStroke: "rgba(244,114,182,0.18)",
       shadowColor: "#94a3b8",
       shadowOpacity: "0.35",
-      textPrimary: "#0f172a",
-      textSecondary: "#475569",
-      label: "#334155",
-      value: "#0f172a",
-      gradeText: "#0f172a",
-      scoreText: "#0f172a",
+      textPrimary: "#3b1d2a",
+      textSecondary: "#6b3a4a",
+      label: "#6b4b5a",
+      value: "#2f1b24",
+      gradeText: "#3b1d2a",
+      scoreText: "#3b1d2a",
       accentOrb: "#f9a8d4",
-      accentOrbOpacity: "0.14",
-      avatarBg: "rgba(241,245,255,0.9)",
-      avatarStroke: "rgba(99,102,241,0.25)",
-      iconColor: "#64748b",
+      accentOrbOpacity: "0.2",
+      avatarBg: "rgba(255,240,245,0.9)",
+      avatarStroke: "rgba(244,114,182,0.35)",
+      iconColor: "#c084fc",
       iconOpacity: "0.9",
-      metricFill: "rgba(255,255,255,0.85)",
-      metricStroke: "rgba(99,102,241,0.08)",
+      metricFill: "rgba(255,255,255,0.9)",
+      metricStroke: "rgba(244,114,182,0.14)",
+      sakuraBloom: "#fbcfe8",
       sakuraPetal: "#fbcfe8",
-      sakuraPetalStroke: "rgba(236,72,153,0.22)",
-      sakuraSnow: "#e0f2fe",
-      infoBg: "#f8fafc",
+      sakuraPetalStroke: "rgba(236,72,153,0.3)",
+      sakuraSnow: "#ffe4e6",
+      infoBg: "#fff1f5",
       errorText: "#b91c1c",
     };
   }
@@ -779,14 +787,14 @@ function getRankColor(level, theme) {
 
   if (theme === "sakura") {
     const sakuraColors = {
-      S: "#f9a8d4",
-      "A+": "#93c5fd",
-      A: "#60a5fa",
-      "A-": "#a5b4fc",
-      "B+": "#7dd3fc",
-      B: "#bae6fd",
+      S: "#f472b6",
+      "A+": "#fb7185",
+      A: "#fda4af",
+      "A-": "#f9a8d4",
+      "B+": "#fbcfe8",
+      B: "#fecdd3",
       "B-": "#e9d5ff",
-      "C+": "#fecdd3",
+      "C+": "#ddd6fe",
       C: "#e2e8f0",
       default: "#e2e8f0",
     };
