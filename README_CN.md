@@ -1,6 +1,6 @@
 ﻿# GithubCard
 
-一个部署在 Cloudflare Workers 上的 GitHub 资料卡 SVG 生成器。
+一个美观的自部署 Cloudflare Workers 单文件 GitHub 资料卡 SVG 生成器。
 
 ## 功能
 - `/{username}` 返回 SVG 图片。
@@ -11,8 +11,14 @@
 - 主题：`?theme=dark`（默认）、`?theme=light`、`?theme=matrix`、`?theme=ayaka`、`?theme=sakura`（雪花+樱瓣纹理）。
 - 可选 `LOCKED_USER` 环境变量，锁定只允许访问指定用户名。
 
+## 获取 GitHub Token
+1. GitHub → Settings → Developer settings → Personal access tokens。
+2. 创建 Token（推荐 Fine-grained）。
+3. Repository access：选择 **All public repositories**（或更小范围）。
+4. Permissions：至少 `read:user`（若需要私有数据再加 `repo`）。
+5. 生成并复制 Token（只会显示一次）。
+
 ## 主题预览
-把 `https://your-domain.com` 替换为你自己的 Worker 域名。下面用 `/test`，无需 Token。
 
 | 主题 | 预览 |
 | --- | --- |

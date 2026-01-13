@@ -2,7 +2,9 @@
 
 [中文说明](README_CN.md)
 
-Cloudflare Worker that generates a modern SVG GitHub profile card.
+|  |  |
+| --- | --- |
+| A GitHub profile card SVG generator deployed on Cloudflare Workers. | <img src="images/ayaka.svg" alt="ayaka" width="320" /> |
 
 ## Features
 - `/{username}` endpoint that returns an SVG image.
@@ -13,8 +15,37 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Theme support via `?theme=light`, `?theme=dark` (default), `?theme=matrix`, `?theme=ayaka`, or `?theme=sakura` (snow + petals).
 - Optional `LOCKED_USER` env var to restrict the worker to a single username.
 
+## Get a GitHub Token
+1. GitHub → Settings → Developer settings → Personal access tokens.
+2. Create a token (Fine-grained recommended).
+3. Repository access: **All public repositories** (or narrower if you prefer).
+4. Permissions: `read:user` (and `repo` only if you need private data).
+5. Generate and copy the token (it’s shown only once).
+
+## Deploy
+### Cloudflare Dashboard (No CLI)
+1. Cloudflare Dashboard -> Workers & Pages -> Create -> Worker -> Start from scratch.
+2. Open **Quick Edit / Edit code**, replace the default code with `src/index.js`.
+3. **Settings -> Variables**: add `GITHUB_TOKEN` as an encrypted variable.
+4. Save and Deploy.
+5. Visit `https://<your-worker>.workers.dev/{github-name}` (or `/test` for demo).
+
+### Wrangler CLI
+1. Authenticate Wrangler:
+   ```bash
+   npx wrangler login
+   ```
+2. Add the GitHub token as a secret:
+   ```bash
+   npx wrangler secret put GITHUB_TOKEN
+   ```
+3. Deploy:
+   ```bash
+   npm run deploy
+   ```
+4. Access `https://your-worker-domain/{github-name}`
+
 ## Theme Preview
-Replace `https://your-domain.com` with your Worker domain. The examples use `/test` so they work without a token.
 
 | Theme | Preview |
 | --- | --- |
@@ -38,29 +69,6 @@ Replace `https://your-domain.com` with your Worker domain. The examples use `/te
    npm run dev
    ```
 4. Visit `http://localhost:8787/{github-name}`
-
-## Deploy
-### Cloudflare Dashboard (No CLI)
-1. Cloudflare Dashboard → Workers & Pages → Create → Worker → Start from scratch.
-2. Open **Quick Edit / Edit code**, replace the default code with `src/index.js`.
-3. **Settings → Variables**: add `GITHUB_TOKEN` as an encrypted variable.
-4. Save and Deploy.
-5. Visit `https://<your-worker>.workers.dev/{github-name}` (or `/test` for demo).
-
-### Wrangler CLI
-1. Authenticate Wrangler:
-   ```bash
-   npx wrangler login
-   ```
-2. Add the GitHub token as a secret:
-   ```bash
-   npx wrangler secret put GITHUB_TOKEN
-   ```
-3. Deploy:
-   ```bash
-   npm run deploy
-   ```
-4. Access `https://your-worker-domain/{github-name}`
 
 ## Notes
 - The GitHub token only needs `read:user` + `repo` public access to query stats.
