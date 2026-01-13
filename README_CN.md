@@ -11,6 +11,14 @@
 - 主题：`?theme=dark`（默认）、`?theme=light`、`?theme=matrix`、`?theme=ayaka`、`?theme=sakura`（雪花+樱瓣纹理）。
 - 可选 `LOCKED_USER` 环境变量，锁定只允许访问指定用户名。
 
+## 部署
+### Cloudflare 控制台（无需命令行）
+1. Cloudflare Dashboard → Workers & Pages → Create → Worker → Start from scratch。
+2. 打开 **Quick Edit / Edit code**，把默认代码替换为 `src/index.js`。
+3. **Settings → Variables** 中添加 `GITHUB_TOKEN`，勾选加密。
+4. 保存并部署。
+5. 访问 `https://<your-worker>.workers.dev/{github-name}`（或 `/test` 预览）。
+
 ## 获取 GitHub Token
 1. GitHub → Settings → Developer settings → Personal access tokens。
 2. 创建 Token（推荐 Fine-grained）。
@@ -42,14 +50,6 @@
    npm run dev
    ```
 4. 访问 `http://localhost:8787/{github-name}`
-
-## 部署
-### Cloudflare 控制台（无需命令行）
-1. Cloudflare Dashboard → Workers & Pages → Create → Worker → Start from scratch。
-2. 打开 **Quick Edit / Edit code**，把默认代码替换为 `src/index.js`。
-3. **Settings → Variables** 中添加 `GITHUB_TOKEN`，勾选加密。
-4. 保存并部署。
-5. 访问 `https://<your-worker>.workers.dev/{github-name}`（或 `/test` 预览）。
 
 ### Wrangler CLI
 1. 登录 Wrangler：
