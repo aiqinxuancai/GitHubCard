@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="320" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Octavia Chen GitHub stats card. Total Stars Earned 1,480, Total Commits (last year) 1,327, Total PRs 96, Total Issues 34, Contributed to (last year) 18. Grade A+.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff1f5" />
+      <stop offset="45%" stop-color="#ffe4e6" />
+      <stop offset="100%" stop-color="#e9d5ff" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.2" cy="0.1" r="0.6">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.9" cy="0.8" r="0.7">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f472b6" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.92)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.7)" />
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(244,114,182,0.2)" stroke-width="1" />
+    </pattern>
+    
+    
+    <radialGradient id="sakuraBloom" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#fbcfe8" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="sakuraPetals" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="#fbcfe8" fill-opacity="0.5" stroke="rgba(236,72,153,0.3)" stroke-width="0.6">
+        <ellipse cx="18" cy="18" rx="7" ry="3.4" transform="rotate(-18 18 18)" />
+        <ellipse cx="78" cy="26" rx="6" ry="3" transform="rotate(22 78 26)" />
+        <ellipse cx="42" cy="64" rx="8" ry="3.6" transform="rotate(-35 42 64)" />
+        <ellipse cx="92" cy="78" rx="7" ry="3.3" transform="rotate(28 92 78)" />
+        <ellipse cx="26" cy="92" rx="6.5" ry="3.1" transform="rotate(-10 26 92)" />
+      </g>
+    </pattern>
+    <pattern id="sakuraSnow" width="140" height="140" patternUnits="userSpaceOnUse">
+      <g fill="#ffe4e6" fill-opacity="0.65">
+        <circle cx="18" cy="24" r="1.5" />
+        <circle cx="60" cy="18" r="1.1" />
+        <circle cx="108" cy="44" r="1.3" />
+        <circle cx="36" cy="96" r="1.4" />
+        <circle cx="90" cy="102" r="1.2" />
+        <circle cx="122" cy="92" r="1.1" />
+      </g>
+    </pattern>
+  
+    <clipPath id="avatarClip">
+      <circle cx="60" cy="64" r="36" />
+    </clipPath>
+    <symbol id="githubIcon" viewBox="0 0 496 512">
+      <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.5-5.2 3.5-3.3.3-5.6-1.3-5.6-3.5 0-2 2.3-3.5 5.2-3.5 3.3-.3 5.6 1.3 5.6 3.5zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6.7 5.6-.3 6.2-2.3.7-2-1.3-4.3-4.3-5.2-2.6-.6-5.6.4-6.2 2.6zm44.2-1.7c-2.9.7-4.9 3-4.6 5.3.3 2.3 2.9 3.6 5.9 3 2.9-.7 4.9-3 4.6-5.3-.3-2.3-3-3.6-5.9-3zm73.5 6.3c-1 2.3 1.3 5.2 4.9 6.5 3.6 1.3 7.5.3 8.5-2 1-2.3-1.3-5.2-4.9-6.5-3.6-1.3-7.5-.3-8.5 2zm-36-7c-3.3.7-5.6 3.6-5.2 6.2.3 2.6 3.3 4.3 6.6 3.6 3.3-.7 5.6-3.6 5.2-6.2-.3-2.6-3.2-4.3-6.6-3.6zM248 8C111 8 0 119 0 256c0 110.2 71.4 203.8 170.7 236.9 12.5 2.3 17.1-5.4 17.1-12 0-6-0.2-21.7-0.3-42.7-69.5 15.1-84.1-33.5-84.1-33.5-11.4-29-27.9-36.7-27.9-36.7-22.8-15.6 1.7-15.3 1.7-15.3 25.2 1.8 38.5 25.8 38.5 25.8 22.4 38.4 58.8 27.3 73.1 20.9 2.3-16.2 8.8-27.3 16-33.6-55.5-6.3-113.8-27.8-113.8-123.6 0-27.3 9.8-49.6 25.8-67.1-2.6-6.3-11.2-31.8 2.4-66.1 0 0 21-6.7 68.8 25.6 20-5.6 41.5-8.4 62.8-8.5 21.3.1 42.8 2.9 62.8 8.5 47.8-32.3 68.8-25.6 68.8-25.6 13.6 34.3 5 59.8 2.4 66.1 16 17.5 25.8 39.8 25.8 67.1 0 96.1-58.4 117.2-114 123.4 9 7.8 17.1 23.1 17.1 46.6 0 33.6-.3 60.7-.3 69 0 6.6 4.5 14.4 17.2 12C424.6 459.8 496 366.2 496 256 496 119 385 8 248 8z" />
+    </symbol>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.6  0 0 0 0 1  0 0 0 0.4 0" />
+      <feBlend in="SourceGraphic" in2="blur" mode="screen" />
+    </filter>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#94a3b8" flood-opacity="0.35" />
+    </filter>
+    <style>
+      .title { font: 600 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #3b1d2a; letter-spacing: 0.2px; }
+      .subtitle { font: 400 12.5px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #6b3a4a; }
+      .label { font: 500 10.5px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #6b4b5a; letter-spacing: 0.6px; text-transform: uppercase; }
+      .value { font: 600 16px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #2f1b24; }
+      .grade { font: 700 22px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #3b1d2a; }
+      .score { font: 500 11px 'Space Grotesk', 'Segoe UI', sans-serif; fill: #3b1d2a; text-transform: uppercase; letter-spacing: 0.9px; }
+    </style>
+  </defs>
+
+  <rect width="640" height="320" rx="28" fill="url(#bg)" />
+  <rect width="640" height="320" rx="28" fill="url(#grid)" opacity="0.5" />
+  
+  
+  <rect width="640" height="320" rx="28" fill="url(#sakuraBloom)" opacity="0.7" />
+  <rect width="640" height="320" rx="28" fill="url(#sakuraSnow)" opacity="0.45" />
+  <rect width="640" height="320" rx="28" fill="url(#sakuraPetals)" opacity="0.6" />
+  
+  <rect width="640" height="320" rx="28" fill="url(#glow1)" />
+  <rect width="640" height="320" rx="28" fill="url(#glow2)" />
+  <rect x="18" y="18" width="604" height="284" rx="22" fill="url(#glass)" stroke="rgba(244,114,182,0.18)" filter="url(#cardShadow)" />
+
+  <circle cx="528" cy="70" r="78" fill="url(#accent)" opacity="0.18" filter="url(#softGlow)" />
+  <circle cx="560" cy="260" r="96" fill="#f9a8d4" opacity="0.2" />
+
+  <g>
+    <circle cx="60" cy="64" r="36" fill="rgba(255,240,245,0.9)" stroke="rgba(244,114,182,0.35)" />
+    <use href="#githubIcon" x="38" y="42" width="44" height="44" style="color:#c084fc" opacity="0.9" />
+    <image href="data:image/png;base64,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" x="24" y="28" width="72" height="72" clip-path="url(#avatarClip)" />
+    <text class="title" x="112" y="56">Octavia Chen</text>
+    <text class="subtitle" x="112" y="78">@test - 42 repos</text>
+    <text class="subtitle" x="112" y="96">Last year: 2025-01 to 2026-01 - Joined 2017-06</text>
+  </g>
+
+  <g transform="translate(468 36)">
+    <rect width="148" height="72" rx="18" fill="#fb7185" />
+    <text class="grade" x="18" y="40">A+</text>
+    <text class="score" x="18" y="58">Percentile 11.5</text>
+  </g>
+
+  
+        <g transform="translate(24 146)">
+          <rect width="280" height="44" rx="14" fill="rgba(255,255,255,0.9)" stroke="rgba(244,114,182,0.14)" />
+          <text class="label" x="16" y="18">Total Stars Earned</text>
+          <text class="value" x="16" y="34">1,480</text>
+        </g>
+      
+        <g transform="translate(336 146)">
+          <rect width="280" height="44" rx="14" fill="rgba(255,255,255,0.9)" stroke="rgba(244,114,182,0.14)" />
+          <text class="label" x="16" y="18">Total Commits (last year)</text>
+          <text class="value" x="16" y="34">1,327</text>
+        </g>
+      
+        <g transform="translate(24 200)">
+          <rect width="280" height="44" rx="14" fill="rgba(255,255,255,0.9)" stroke="rgba(244,114,182,0.14)" />
+          <text class="label" x="16" y="18">Total PRs</text>
+          <text class="value" x="16" y="34">96</text>
+        </g>
+      
+        <g transform="translate(336 200)">
+          <rect width="280" height="44" rx="14" fill="rgba(255,255,255,0.9)" stroke="rgba(244,114,182,0.14)" />
+          <text class="label" x="16" y="18">Total Issues</text>
+          <text class="value" x="16" y="34">34</text>
+        </g>
+      
+        <g transform="translate(24 254)">
+          <rect width="592" height="44" rx="14" fill="rgba(255,255,255,0.9)" stroke="rgba(244,114,182,0.14)" />
+          <text class="label" x="16" y="18">Contributed to (last year)</text>
+          <text class="value" x="16" y="34">18</text>
+        </g>
+      
+</svg>

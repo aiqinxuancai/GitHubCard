@@ -1,5 +1,7 @@
 ﻿# GithubCard
 
+[中文说明](README_CN.md)
+
 Cloudflare Worker that generates a modern SVG GitHub profile card.
 
 ## Features
@@ -9,6 +11,18 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Demo mode via `/{username}?demo=1` or `/test` without a token.
 - Force refresh via `/{username}?refresh=1` to bypass cache once.
 - Theme support via `?theme=light`, `?theme=dark` (default), `?theme=matrix`, `?theme=ayaka`, or `?theme=sakura` (snow + petals).
+- Optional `LOCKED_USER` env var to restrict the worker to a single username.
+
+## Theme Preview
+Replace `https://your-domain.com` with your Worker domain. The examples use `/test` so they work without a token.
+
+| Theme | Preview |
+| --- | --- |
+| Dark (default) | ![dark](images/dark.svg) |
+| Light | ![light](images/light.svg) |
+| Matrix | ![matrix](images/matrix.svg) |
+| Ayaka | ![ayaka](images/ayaka.svg) |
+| Sakura (snow + petals) | ![sakura](images/sakura.svg) |
 
 ## Local Development
 1. Install dependencies
@@ -26,6 +40,14 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 4. Visit `http://localhost:8787/{github-name}`
 
 ## Deploy
+### Cloudflare Dashboard (No CLI)
+1. Cloudflare Dashboard → Workers & Pages → Create → Worker → Start from scratch.
+2. Open **Quick Edit / Edit code**, replace the default code with `src/index.js`.
+3. **Settings → Variables**: add `GITHUB_TOKEN` as an encrypted variable.
+4. Save and Deploy.
+5. Visit `https://<your-worker>.workers.dev/{github-name}` (or `/test` for demo).
+
+### Wrangler CLI
 1. Authenticate Wrangler:
    ```bash
    npx wrangler login
@@ -45,3 +67,8 @@ Cloudflare Worker that generates a modern SVG GitHub profile card.
 - Cached responses are stored for one hour to reduce API usage.
 - Grade thresholds and scoring weights can be edited in `src/index.js`.
 - Avatars are inlined in the SVG by default for GitHub README compatibility; use `?avatar=external` to keep the original URL.
+- To lock the worker to a single user, set `LOCKED_USER` via Dashboard Variables or add to `wrangler.toml`:
+  ```toml
+  [vars]
+  LOCKED_USER = "your_github_username"
+  ```

@@ -12,6 +12,20 @@ export default {
       return svgResponse(renderInfoSvg(theme));
     }
 
+    const lockedUser = (env.LOCKED_USER || "").trim();
+    if (
+      lockedUser &&
+      username.toLowerCase() !== lockedUser.toLowerCase()
+    ) {
+      return svgResponse(
+        renderErrorSvg(
+          `This worker is locked to ${lockedUser}.`,
+          theme
+        ),
+        403
+      );
+    }
+
     if (isDemoRequest(username, url)) {
       const inlineAvatar = shouldInlineAvatar(url);
       const demoStats = getMockStats(username);
